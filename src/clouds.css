@@ -1,0 +1,43 @@
+.cloud-animation-wrapper {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+
+  .cloud-part-container {
+    position: absolute;
+
+    &.cloud-part-1 {
+      top: 78px;
+      right: 250px;
+      width: 300px;
+    }
+
+    &.cloud-part-2 {
+      top: 220px;
+      right: -60px;
+    }
+
+    &.cloud-part-3 {
+      top: 167px;
+      left: -32px;
+    }
+
+    &.cloud-part-4 {
+      top: 350px;
+      left: 215px;
+    }
+
+    &.cloud-part-5 {
+      top: 430px;
+      right: 65px;
+    }
+  }
+
+  svg {
+    fill: white;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
