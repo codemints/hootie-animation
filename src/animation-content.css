@@ -1,0 +1,232 @@
+.animation-wrapper {
+  &[data-animation-object="hootie"] {
+    --animation-boundary-width: 475px;
+    --animation-boundary-height: 245px;
+    --animation-boundary-position-x: 330px;
+    --animation-boundary-position-y: 80px;
+
+    --animation-group-top: 5px;
+    --animation-group-left: 35px;
+    --animation-group-scale: 0.75;
+
+    --animation-item-top: initial;
+    --animation-item-left: initial;
+    --animation-item-right: initial;
+    --animation-item-z-index: 0;
+    --animation-item-origin-x: 50%;
+    --animation-item-origin-y: 50%;
+
+    --cubic-bezier-curve-a: cubic-bezier(0.37, 0, 0.63, 1);
+    --cubic-bezier-curve-b: cubic-bezier(0.42, 0, 0.58, 1);
+
+    .animation-boundary-box {
+      width: var(--animation-boundary-width);
+      height: var(--animation-boundary-height);
+      transform: translate(var(--animation-boundary-position-x), var(--animation-boundary-position-y));
+    }
+
+    [data-animation-item="group"] {
+      top: var(--animation-group-top);
+      left: var(--animation-group-left);
+      width: 100%;
+      height: 100%;
+      isolation: isolate;
+      scale: var(--animation-group-scale);
+    }
+
+    .animation-item-wrapper {
+      position: absolute;
+      top: var(--animation-item-top);
+      left: var(--animation-item-left);
+      right: var(--animation-item-right);
+      z-index: var(--animation-item-z-index);
+      transform-origin: var(--animation-item-origin-x) var(--animation-item-origin-y);
+      will-change: transform;
+
+      &[data-animation-item="body"],
+      &[data-animation-item="tail"] {
+        --animation-item-z-index: 0;
+      }
+
+      &[data-animation-item="left-horn"],
+      &[data-animation-item="right-horn"],
+      &[data-animation-item="right-wing"] {
+        --animation-item-z-index: -1;
+      }
+
+      &[data-animation-item="group"] {
+        --animation-oscillate-from: 0px;
+        --animation-oscillate-from-rotation: 4deg;
+        --animation-oscillate-to: -32.5px;
+        --animation-oscillate-to-rotation: 1deg;
+
+        --animation-duration: 1.1s;
+        --animation-timing-function: var(--cubic-bezier-curve-a);
+        --animation-direction: alternate;
+      }
+
+      &[data-animation-item="body"] {
+        --animation-item-top: 50%;
+        --animation-item-left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &[data-animation-item="left-wing"] {
+        --animation-item-top: -8px;
+        --animation-item-left: -15px;
+        --animation-item-origin-x: right;
+        --animation-item-origin-y: 112px;
+
+        --animation-rotate-from: 10deg;
+        --animation-rotate-to: -15deg;
+
+        --animation-duration: 0.55s;
+        --animation-timing-function: var(--cubic-bezier-curve-b);
+      }
+
+      &[data-animation-item="right-wing"] {
+        --animation-item-top: -10px;
+        --animation-item-right: -40px;
+        --animation-item-origin-x: left;
+        --animation-item-origin-y: 125px;
+
+        --animation-rotate-from: -5deg;
+        --animation-rotate-to: 20deg;
+
+        --animation-duration: 0.55s;
+        --animation-timing-function: var(--cubic-bezier-curve-b);
+      }
+
+      &[data-animation-item="left-horn"] {
+        --animation-item-top: -47px;
+        --animation-item-left: 113px;
+        --animation-item-origin-x: right;
+        --animation-item-origin-y: 22px;
+
+        --animation-rotate-step-mid: -3deg;
+
+        --animation-duration: 1.5s;
+        --animation-timing-function: var(--cubic-bezier-curve-b);
+        --animation-direction: normal;
+      }
+
+      &[data-animation-item="right-horn"] {
+        --animation-item-top: -42px;
+        --animation-item-right: 50px;
+        --animation-item-origin-x: left;
+        --animation-item-origin-y: 22px;
+
+        --animation-rotate-step-mid: 3deg;
+
+        --animation-duration: 1.5s;
+        --animation-timing-function: var(--cubic-bezier-curve-b);
+        --animation-direction: normal;
+      }
+
+      &[data-animation-item="tail"] {
+        --animation-item-top: 95px;
+        --animation-item-left: -117px;
+        --animation-item-origin-x: right;
+        --animation-item-origin-y: 77px;
+
+        --animation-rotate-from: 3deg;
+        --animation-rotate-to: -3deg;
+
+        --animation-duration: 0.8s;
+        --animation-timing-function: var(--cubic-bezier-curve-b);
+      }
+    }
+  }
+
+  &[data-animation-object="clouds"] {
+    --animation-track-top: 0;
+    --animation-svg-fill: white;
+    --animation-svg-width: 300px;
+    --animation-item-translate-x: 0;
+    --animation-item-translate-y: 0;
+
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+
+    .animation-track {
+      display: block;
+      position: absolute;
+      top: var(--animation-track-top);
+      left: 0;
+      width: 100%;
+      white-space: nowrap;
+
+      &[data-animation-track="1"] {
+        --animation-track-top: 40px;
+        --animation-duration: 20s;
+
+        [data-animation-content="cloud-1"] {
+          --animation-item-translate-x: -17%;
+          --animation-item-translate-y: -30px;
+        }
+
+        [data-animation-content="cloud-2"] {
+          --animation-item-translate-x: 155%;
+          --animation-item-translate-y: 25px;
+        }
+      }
+
+      &[data-animation-track="2"] {
+        --animation-track-top: 160px;
+        --animation-duration: 12s;
+
+        [data-animation-content="cloud-1"] {
+          --animation-item-translate-x: 115%;
+          --animation-item-translate-y: -2px;
+        }
+
+        [data-animation-content="cloud-2"] {
+          --animation-item-translate-x: 245%;
+          --animation-item-translate-y: 35px;
+        }
+      }
+
+      &[data-animation-track="3"] {
+        --animation-track-top: 280px;
+        --animation-duration: 15s;
+
+        [data-animation-content="cloud-1"] {
+          --animation-item-translate-x: 25%;
+          --animation-item-translate-y: -12px;
+        }
+
+        [data-animation-content="cloud-2"] {
+          --animation-item-translate-x: 165%;
+          --animation-item-translate-y: 85px;
+        }
+      }
+    }
+
+    .animation-item-wrapper {
+      will-change: transform;
+    }
+
+    .animation-content-wrapper,
+    .animation-content-item {
+      display: inline-block;
+    }
+
+    .animation-content-wrapper {
+      width: 100%;
+    }
+    
+    .animation-content-item {
+      width: var(--animation-svg-width);
+      transform: translate(var(--animation-item-translate-x), var(--animation-item-translate-y));
+
+      svg {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        fill: var(--animation-svg-fill);
+      }
+    }
+  }
+}

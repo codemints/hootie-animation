@@ -1,0 +1,136 @@
+@property --animation-oscillate-from {
+  syntax: '<length>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-oscillate-from-rotation {
+  syntax: '<angle>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-oscillate-to {
+  syntax: '<length>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-oscillate-to-rotation {
+  syntax: '<angle>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-rotate-step-start-end {
+  syntax: '<angle>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-rotate-step-mid {
+  syntax: '<angle>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-rotate-from {
+  syntax: '<angle>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-rotate-to {
+  syntax: '<angle>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-scroll-track-from {
+  syntax: '<percentage>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@property --animation-scroll-track-to {
+  syntax: '<percentage>';
+  initial-value: 0;
+  inherits: false;
+}
+
+.animation-animated {
+  --animation-duration: 1s;
+  --animation-timing-function: linear;
+  --animation-iteration-count: infinite;
+  --animation-direction: normal;
+
+  --animation-oscillate-from: 0;
+  --animation-oscillate-from-rotation: 5deg;
+  --animation-oscillate-to: -10px;
+  --animation-oscillate-to-rotation: -5deg;
+
+  --animation-rotate-step-start-end: 0deg;
+  --animation-rotate-step-mid: 10deg;
+
+  --animation-rotate-from: 0deg;
+  --animation-rotate-to: 10deg;
+
+  --animation-scroll-track-from: 0%;
+  --animation-scroll-track-to: -100%;
+
+  .animation-oscillate {
+    animation: animation-oscillate var(--animation-duration) var(--animation-timing-function) var(--animation-iteration-count) var(--animation-direction);
+  }
+
+  .animation-rotate-step {
+    animation: animation-rotate-step var(--animation-duration) var(--animation-timing-function) var(--animation-iteration-count) var(--animation-direction);
+  }
+
+  .animation-rotate-from-to {
+    animation: animation-rotate-from-to var(--animation-duration) var(--animation-timing-function) var(--animation-iteration-count) var(--animation-direction);
+  }
+
+  .animation-scroll-track {
+    animation: animation-scroll-track var(--animation-duration) var(--animation-timing-function) var(--animation-iteration-count) var(--animation-direction);
+  }
+}
+
+@keyframes animation-oscillate {
+  from {
+    transform: translateY(var(--animation-oscillate-from)) rotate(var(--animation-oscillate-from-rotation));
+  }
+
+  to {
+    transform: translateY(var(--animation-oscillate-to)) rotate(var(--animation-oscillate-to-rotation));
+  }
+}
+
+@keyframes animation-rotate-step {
+  0%, 100% {
+    transform: rotate(var(--animation-rotate-step-start-end));
+  }
+
+  20% {
+    transform: rotate(var(--animation-rotate-step-mid))
+  }
+}
+
+@keyframes animation-rotate-from-to {
+  from {
+    transform: rotate(var(--animation-rotate-from));
+  }
+
+  to {
+    transform: rotate(var(--animation-rotate-to));
+  }
+}
+
+@keyframes animation-scroll-track {
+  from {
+    transform: translateX(var(--animation-scroll-track-from));
+  }
+
+  to {
+    transform: translateX(var(--animation-scroll-track-to));
+  }
+}
